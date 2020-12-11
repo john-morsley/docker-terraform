@@ -1,0 +1,11 @@
+stages:
+- build
+- deploy
+
+Build Docker Image:
+  stage: build
+  image: alpine
+  script:
+  - docker build --tag johnmorsley/alpine-with-terraform .
+
+
