@@ -4,7 +4,7 @@ stages:
 
 Build Docker Image:
   stage: build
-  image: docker
+  image: docker:20-dind
   script:
   - docker build --tag johnmorsley/alpine-with-terraform .
 
