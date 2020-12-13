@@ -15,5 +15,5 @@ Build & Push Docker Image:
   stage: build-and-push
   image: docker:dind
   script:
-  - docker build --tag $DOCKER_USERNAME/alpine-with-terraform .
+  - docker build --tag $DOCKER_USERNAME/alpine-with-terraform:0.14.2 --tag $DOCKER_USERNAME/alpine-with-terraform:latest .
   - docker push $DOCKER_USERNAME/alpine-with-terraform
