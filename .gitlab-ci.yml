@@ -6,14 +6,14 @@ services:
 
 before_script:  
   - docker info
-  - docker login --username "$DOCKER_USERNAME" --password "$DOCKER_TOKEN" $DOCKER_REGISTRY
+  - echo "$DOCKER_TOKEN" | docker login --username "$DOCKER_USERNAME" --password-stdin $DOCKER_REGISTRY
 
 stages:
-- build
-- deploy
+- build-and-push
 
-Build Docker Image:
-  stage: build
+Build & Push Docker Image:
+  stage: build-and-push
   image: docker:dind
   script:
-  - docker build --tag johnmorsley/alpine-with-terraform .
+  - docker build --tag $DOCKER_USERNAME/alpine-with-terraform .
+  - docker push $DOCKER_USERNAME/alpine-with-terraform .  
